@@ -1,0 +1,391 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --primary: #1d1f28;
+  --inset: 0px 0px 5px 1px rgba(0, 0, 0, 0.16) inset;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.16) inset;
+  -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.16) inset;
+  --outset: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Prompt", sans-serif;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bouncingLetter {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.2rem);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes backdropIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideInFromTop {
+  0% {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+}
+
+.lobby-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lobby-container h1 {
+  font-size: 45px;
+}
+
+.lobby-container button {
+  border-radius: 5px;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.lobby-container button:hover {
+  transform: translate(0, -0.2rem);
+}
+
+.lobby-container button:active {
+  transform: translate(0, 0);
+  background-color: #101116;
+}
+
+.lobby-container p {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  margin-top: 1rem;
+}
+
+.container {
+  background-color: white;
+  padding: 1rem;
+  width: 400px;
+  border-radius: 5px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  animation: 0.55s ease-out slideInFromTop;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 18px;
+  padding-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.ingame-info-container {
+  font-size: 12px;
+  display: flex;
+}
+
+.level,
+.lives {
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem 0;
+  border-radius: 2px;
+  box-shadow: var(--inset);
+}
+
+.lives {
+  margin-left: 10px;
+}
+
+.ingame-info-container img {
+  height: 12px;
+}
+
+.content-container .word-shuffle {
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.8rem;
+  animation: 1s ease-in-out bouncingLetter;
+  animation-iteration-count: infinite;
+}
+
+.word-shuffle-container {
+  animation: 1s ease-in-out zoomIn;
+}
+
+.word-shuffle button {
+  font-size: 25px;
+  font-weight: 600;
+  border-radius: 5px;
+  color: var(--primary);
+  height: 60px;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  box-shadow: var(--outset);
+  border: none;
+}
+
+.input {
+  width: 100%;
+  border-radius: 3px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: var(--inset);
+}
+
+.input .user-answer {
+  font-weight: 600;
+  font-size: 25px;
+  color: var(--primary);
+  letter-spacing: 1rem;
+}
+
+.input .clear {
+  border: none;
+  height: 100%;
+  color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  padding: 0 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 12px;
+  right: 0;
+  background: none;
+  animation: 0.5s ease-in-out zoomIn;
+}
+
+.input .clear:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.user-action {
+  display: flex;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.user-action button {
+  cursor: pointer;
+  flex: 1;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem 0;
+  font-weight: 600;
+  transition: all 0.15s ease-in-out;
+}
+
+.user-action button:hover {
+  transform: translate(0, -0.2rem);
+}
+
+.user-action .shuffle-btn {
+  background-color: white;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  animation: 0.55s ease-out slideInFromLeft;
+}
+
+.user-action .shuffle-btn:active {
+  background-color: #1d1f280e;
+  transform: translate(0, 0);
+}
+
+.user-action .submit-btn {
+  background-color: var(--primary);
+  color: white;
+  animation: 0.55s ease-out slideInFromRight;
+}
+
+.user-action .submit-btn:active {
+  background-color: #101116;
+  transform: translate(0, 0);
+}
+
+/* ---------------- MODAL ---------------- */
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  animation: 0.3s ease-out backdropIn;
+}
+
+.modal {
+  position: absolute;
+  z-index: 99;
+  background-color: white;
+  width: 350px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  animation: 0.3s ease-out modalSlideInFromTop;
+}
+
+.modal h1 {
+  display: grid;
+  place-content: center;
+  font-size: 40px;
+  letter-spacing: 1rem;
+  height: 120px;
+  color: white;
+  font-weight: 700;
+  border-radius: 5px 5px 0 0;
+}
+
+.modal p {
+  text-align: center;
+  padding: 1.5rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.modal div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal div button {
+  border: none;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50px;
+  margin-bottom: -25px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: all 0.15s ease-in-out;
+}
+
+.modal div button:hover {
+  transform: translate(0, -0.5rem);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.game-over .h1 {
+  background-color: #ed6a4e;
+  display: grid;
+  place-content: center;
+  font-size: 40px;
+  height: 120px;
+  color: white;
+  font-weight: 700;
+  border-radius: 5px 5px 0 0;
+}
+
+.game-over-button {
+  background-color: #ed6a4e;
+}
+.game-over-button:active {
+  background-color: #c84b2f;
+}
+
+/* ---------------- IF CORRECT ---------------- */
+
+.status-correct {
+  background-color: #77d79a;
+}
+
+.modal div .status-correct:active {
+  background-color: #42b56c;
+}
+
+.status-wrong {
+  background-color: #ed6a4e;
+}
+
+.modal div .status-wrong:active {
+  background-color: #c84b2f;
+}
